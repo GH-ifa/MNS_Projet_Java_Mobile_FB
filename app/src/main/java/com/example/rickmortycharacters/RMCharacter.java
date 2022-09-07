@@ -7,12 +7,14 @@ public class RMCharacter {
     private String name;
     private String img;
     private String gender;
+    private Integer id;
 
     public RMCharacter(JSONObject json) {
         try {
             this.name = json.getString("name");
             this.img = json.getString("image");
             this.gender = json.getString("gender");
+            this.id = json.getInt("id");
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -43,5 +45,9 @@ public class RMCharacter {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
     //endregion
 }

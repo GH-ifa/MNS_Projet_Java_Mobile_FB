@@ -29,11 +29,20 @@ public class RMCharactersListAdapter extends RecyclerView.Adapter<RMCharactersLi
         TextView itemCharacterGender;
         ImageView itemCharacterImg;
 
+        Integer characterId;
+
         public CharactersViewHolder(@NonNull View itemView) {
             super(itemView);
             itemCharacterName = itemView.findViewById(R.id.characterName);
             itemCharacterGender = itemView.findViewById(R.id.characterGender);
             itemCharacterImg = itemView.findViewById(R.id.characterImg);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("RMC", "j'ai cliqué" + characterId);
+                }
+            });
         }
     }
 
@@ -59,6 +68,7 @@ public class RMCharactersListAdapter extends RecyclerView.Adapter<RMCharactersLi
         holder.itemCharacterName.setText(charactersList.get(position).getName());
         holder.itemCharacterGender.setText(charactersList.get(position).getGender());
         holder.itemCharacterImg.setImageBitmap(this.getBitmapFromURL(charactersList.get(position).getImg()));
+        holder.characterId = charactersList.get(position).getId();
     }
 
     @Override
