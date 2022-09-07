@@ -8,6 +8,8 @@ public class RMCharacter {
     private String img;
     private String gender;
     private Integer id;
+    private String species;
+    private String status;
 
     public RMCharacter(JSONObject json) {
         try {
@@ -15,6 +17,8 @@ public class RMCharacter {
             this.img = json.getString("image");
             this.gender = json.getString("gender");
             this.id = json.getInt("id");
+            this.species = json.getString("species");
+            this.status = json.getString("status");
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -49,5 +53,13 @@ public class RMCharacter {
     public Integer getId() { return id; }
 
     public void setId(Integer id) { this.id = id; }
+
+    public String getSpecies() { return species; }
+
+    public void setSpecies(String species) { this.species = species; }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
     //endregion
 }

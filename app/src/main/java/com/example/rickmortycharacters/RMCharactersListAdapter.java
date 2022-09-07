@@ -1,5 +1,6 @@
 package com.example.rickmortycharacters;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.StrictMode;
@@ -41,6 +42,9 @@ public class RMCharactersListAdapter extends RecyclerView.Adapter<RMCharactersLi
                 @Override
                 public void onClick(View view) {
                     Log.d("RMC", "j'ai cliqué" + characterId);
+                    Intent intent = new Intent(view.getContext(), CharacterDetail.class);
+                    intent.putExtra("charId", characterId);
+                    view.getContext().startActivity(intent);
                 }
             });
         }
@@ -58,7 +62,8 @@ public class RMCharactersListAdapter extends RecyclerView.Adapter<RMCharactersLi
                 .inflate(R.layout.item_rmcharacter,parent,false);
 
         CharactersViewHolder viewHolder = new CharactersViewHolder(view);
-        StrictMode.ThreadPolicy policy =          new StrictMode.ThreadPolicy.Builder().permitAll().build();         StrictMode.setThreadPolicy(policy);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         return viewHolder;
     }
@@ -67,7 +72,7 @@ public class RMCharactersListAdapter extends RecyclerView.Adapter<RMCharactersLi
     public void onBindViewHolder(@NonNull CharactersViewHolder holder, int position) {
         holder.itemCharacterName.setText(charactersList.get(position).getName());
         holder.itemCharacterGender.setText(charactersList.get(position).getGender());
-        holder.itemCharacterImg.setImageBitmap(this.getBitmapFromURL(charactersList.get(position).getImg()));
+        holder.itemCharacterImg.setImageBitmap(RMCharactersListAdapter.getBitmapFromURL(charactersList.get(position).getImg()));
         holder.characterId = charactersList.get(position).getId();
     }
 
@@ -77,7 +82,7 @@ public class RMCharactersListAdapter extends RecyclerView.Adapter<RMCharactersLi
     }
 
 
-    public Bitmap getBitmapFromURL(String src) {
+    public static Bitmap getBitmapFromURL(String src) {
         try {
             Log.e("src",src);
             URL url = new URL(src);
