@@ -12,7 +12,7 @@ J'ai rajouté une fonction statique `getBitmapFromURL` pour récupérer le bitma
 
 <p align="center"><img src="assets/images/liste.png" width="270" height="570"></p>
 
-## Le détail d'un personnages
+## Le détail d'un personnage
 
 Au clic sur un item de la liste, une autre activity CharacterDetail s'ouvre avec quelques infos supplémentaires sur le personnage sélectionné.
 
